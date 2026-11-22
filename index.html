@@ -8,7 +8,7 @@
 </style></head>
 <body><div class="app"><header class="top"><div class="brand"><div class="logo">✦</div><div><b>suara-kira</b><small>Teman TEKUN · AI Accounting</small></div></div><div class="user"><span id="aiConnection">● AI connection ready</span>　Welcome back, <b>Usahawan</b></div></header><div class="layout"><aside><div class="navlabel">MENU UTAMA</div><button class="nav active" data-page="dashboard"><span>▦</span> Dashboard</button><button class="nav" data-page="capture"><span>🎙</span> Rekod Aktiviti</button><button class="nav" data-page="cost"><span>◈</span> Cost Accounting</button><button class="nav" data-page="finance"><span>▤</span> Financial Accounting</button><button class="nav" data-page="teman"><span>♡</span> Teman TEKUN</button><button class="nav" data-page="report"><span>✧</span> AI Report</button><div class="side-note"><b>✦ Dibantu AI</b>Rekod perniagaan anda dengan suara atau gambar. Biarkan Suara-Kira uruskan pengiraan.</div></aside><main class="main">
 <section class="page active" id="dashboard"><div class="pagehead"><div><div class="eyebrow">Ringkasan perniagaan</div><h1>Assalamualaikum! 👋</h1><div class="sub">Ini perkembangan perniagaan anda hari ini.</div></div><div class="date">📅 Rekod demo · boleh dikemaskini</div></div><div class="grid"><div class="card"><div class="metric-icon">💵</div><div class="metric-label">Jualan Hari Ini</div><div class="metric" id="dSales">RM175.00</div><div class="metric-foot">35 bungkus × RM5.00</div></div><div class="card"><div class="metric-icon">🧾</div><div class="metric-label">Jumlah Kos</div><div class="metric" id="dCost">RM70.00</div><div class="metric-foot">Kos bahan & operasi</div></div><div class="card"><div class="metric-icon">📈</div><div class="metric-label">Untung Anggaran</div><div class="metric" id="dProfit">RM105.00</div><div class="metric-foot">Jualan − kos direkodkan</div></div><div class="card"><div class="metric-icon">🎯</div><div class="metric-label">Rekod Bulan Ini</div><div class="metric">18 hari</div><div class="metric-foot">Teruskan rekod harian anda</div></div></div><div class="dashlower"><div class="card"><h3 class="section-title">Ringkasan aliran wang</h3><div class="barrow"><span>Jualan</span><div class="track"><div class="fill" style="width:100%"></div></div><strong id="barSales">RM175</strong></div><div class="barrow"><span>Kos</span><div class="track"><div class="fill" id="barCost" style="width:40%;background:#e9b957"></div></div><strong id="barCostText">RM70</strong></div><div class="barrow"><span>Untung</span><div class="track"><div class="fill" id="barProfit" style="width:60%;background:#71a989"></div></div><strong id="barProfitText">RM105</strong></div><div class="notice green-notice">💡 <b>Tip AI:</b> Asingkan sebahagian hasil jualan untuk bayaran mingguan dan simpanan sebelum menggunakan baki wang.</div></div><div class="card payment"><div class="metric-label">Simpanan untuk bayaran mingguan</div><div class="metric" id="dSaved">RM80.00</div><div class="metric-foot">Sasaran minggu ini: <span id="dTarget">RM150.00</span></div><div class="track" style="margin:15px 0 8px"><div class="fill" id="payBar" style="width:53%"></div></div><div class="metric-foot" id="payPercent">53% daripada sasaran</div><div style="margin-top:18px"><button class="btn gold" onclick="go('teman')">Lihat tracker →</button></div></div></div><div class="card" style="margin-top:15px"><h3 class="section-title">Aktiviti terkini</h3><div id="recent"><div class="activity"><div>🛍️ <b>Jualan nasi lemak</b><small>35 bungkus · Hari ini</small></div><strong>+RM175.00</strong></div><div class="activity"><div>🍗 <b>Pembelian ayam</b><small>Bahan mentah · Hari ini</small></div><strong style="color:var(--red)">−RM40.00</strong></div><div class="activity"><div>🔥 <b>Gas memasak</b><small>Kos operasi · Hari ini</small></div><strong style="color:var(--red)">−RM30.00</strong></div></div></div></section>
-<section class="page" id="capture"><div class="pagehead"><div><div class="eyebrow">Rekod tanpa formula</div><h1>Rekod Aktiviti</h1><div class="sub">Cakap atau taip sahaja. AI akan bantu susun rekod anda.</div></div></div><div class="two"><div class="inputbox"><h3 class="section-title">🎙️ Rekod menggunakan suara</h3><div class="voicebox"><div style="font-size:13px;font-weight:700">Tekan mikrofon dan mula bercakap</div><button class="mic" id="micBtn" onclick="toggleVoice()">🎙</button><div id="voiceStatus" class="hint">Contoh: “Hari ini jual nasi lemak 35 bungkus RM5 satu.”</div></div><p class="hint">Fungsi suara bergantung pada sokongan pelayar dan kebenaran mikrofon. Jika tidak tersedia, anda boleh menaip di sebelah.</p></div><div class="inputbox"><h3 class="section-title">✍️ Atau taip aktiviti anda</h3><textarea id="entry" class="textarea" placeholder="Contoh: Hari ini jual nasi lemak 35 bungkus RM5, beli ayam RM40, gas RM30."></textarea><div class="actions"><button class="btn secondary" onclick="loadExample()">Isi contoh</button><button class="btn" onclick="processEntry()">✦ Analisis dengan AI</button></div></div></div><div class="two" style="margin-top:15px"><div class="inputbox"><h3 class="section-title">📸 Snap / muat naik resit</h3><label class="upload">＋ Pilih gambar resit atau stok<input id="receipt" type="file" accept="image/*" onchange="previewImage(event)"><div class="hint">JPG, PNG · Pratonton gambar</div></label><img id="preview" class="preview" alt="Pratonton resit"><div class="actions"><button class="btn secondary" onclick="scanReceipt()">✦ Analisis resit dengan AI</button></div><p class="hint">Gemini akan membaca item dan jumlah yang kelihatan pada resit. Sila semak hasilnya sebelum menyimpan.</p></div><div class="inputbox"><h3 class="section-title">Bagaimana AI mengelaskan rekod?</h3><div class="activity"><div>🥬 <b>Kos bahan langsung</b><small>Ayam, beras, sayur, bungkusan</small></div><span class="pill">Cost</span></div><div class="activity"><div>🔥 <b>Kos overhed</b><small>Gas, elektrik, sewa</small></div><span class="pill">Cost</span></div><div class="activity"><div>💵 <b>Hasil jualan</b><small>Wang diterima daripada pelanggan</small></div><span class="pill">Financial</span></div><div class="activity"><div>📊 <b>Untung & aliran tunai</b><small>Ringkasan kedudukan kewangan</small></div><span class="pill">Financial</span></div></div></div><div id="analysisResult" class="result"><h3 class="section-title">✦ Hasil analisis AI</h3><div id="analysisRows"></div><div class="actions"><button class="btn" onclick="saveRecord()">Simpan rekod</button></div></div></section>
+<section class="page" id="capture"><div class="pagehead"><div><div class="eyebrow">Rekod tanpa formula</div><h1>Rekod Aktiviti</h1><div class="sub">Cakap atau taip sahaja. AI akan bantu susun rekod anda.</div></div></div><div class="two"><div class="inputbox"><h3 class="section-title">🎙️ Rekod menggunakan suara</h3><div class="voicebox"><div style="font-size:13px;font-weight:700">Tekan mikrofon untuk mula bercakap</div><button class="mic" id="micBtn" onclick="startVoice()" aria-label="Mula rakaman suara">🎙</button><div class="actions" style="justify-content:center;margin-top:4px"><button class="btn" id="stopVoiceBtn" onclick="stopVoice()" disabled>■ Hentikan rakaman</button></div><div id="voiceStatus" class="hint" style="margin-top:10px">Contoh: “Hari ini jual nasi lemak 35 bungkus RM5 satu.” Rakaman hanya berhenti apabila anda tekan Hentikan rakaman.</div></div><p class="hint">Fungsi suara bergantung pada sokongan pelayar dan kebenaran mikrofon. Jika tidak tersedia, anda boleh menaip di sebelah.</p></div><div class="inputbox"><h3 class="section-title">✍️ Atau taip aktiviti anda</h3><textarea id="entry" class="textarea" placeholder="Contoh: Hari ini jual nasi lemak 35 bungkus RM5, beli ayam RM40, gas RM30."></textarea><div class="actions"><button class="btn secondary" onclick="loadExample()">Isi contoh</button><button class="btn" onclick="processEntry()">✦ Analisis dengan AI</button></div></div></div><div class="two" style="margin-top:15px"><div class="inputbox"><h3 class="section-title">📸 Snap / muat naik resit</h3><label class="upload">＋ Pilih gambar resit atau stok<input id="receipt" type="file" accept="image/*" onchange="previewImage(event)"><div class="hint">JPG, PNG · Pratonton gambar</div></label><img id="preview" class="preview" alt="Pratonton resit"><div class="actions"><button class="btn secondary" onclick="scanReceipt()">✦ Analisis resit dengan AI</button></div><p class="hint">Gemini akan membaca item dan jumlah yang kelihatan pada resit. Sila semak hasilnya sebelum menyimpan.</p></div><div class="inputbox"><h3 class="section-title">Bagaimana AI mengelaskan rekod?</h3><div class="activity"><div>🥬 <b>Kos bahan langsung</b><small>Ayam, beras, sayur, bungkusan</small></div><span class="pill">Cost</span></div><div class="activity"><div>🔥 <b>Kos overhed</b><small>Gas, elektrik, sewa</small></div><span class="pill">Cost</span></div><div class="activity"><div>💵 <b>Hasil jualan</b><small>Wang diterima daripada pelanggan</small></div><span class="pill">Financial</span></div><div class="activity"><div>📊 <b>Untung & aliran tunai</b><small>Ringkasan kedudukan kewangan</small></div><span class="pill">Financial</span></div></div></div><div id="analysisResult" class="result"><h3 class="section-title">✦ Hasil analisis AI</h3><div id="analysisRows"></div><div class="actions"><button class="btn" onclick="saveRecord()">Simpan rekod</button></div></div></section>
 <section class="page" id="cost"><div class="pagehead"><div><div class="eyebrow">Cost Accounting</div><h1>Analisis Kos Produk</h1><div class="sub">Fahami kos untuk hasilkan produk dan semak harga jualan.</div></div></div><div class="grid" style="grid-template-columns:repeat(3,1fr)"><div class="card"><div class="metric-label">Kos bahan langsung</div><div class="metric">RM40.00</div><div class="metric-foot">Ayam (contoh)</div></div><div class="card"><div class="metric-label">Kos overhed</div><div class="metric">RM30.00</div><div class="metric-foot">Gas memasak (contoh)</div></div><div class="card"><div class="metric-label">Jumlah kos direkodkan</div><div class="metric">RM70.00</div><div class="metric-foot">Belum termasuk semua kos lain</div></div></div><div class="two" style="margin-top:15px"><div class="card"><h3 class="section-title">Semakan kos seunit</h3><div class="field"><span>Jumlah kos bahan + overhed (RM)</span><input id="costTotal" type="number" value="70" min="0"></div><div class="field"><span>Jumlah unit dihasilkan</span><input id="units" type="number" value="35" min="1"></div><div class="field"><span>Harga jualan seunit (RM)</span><input id="unitPrice" type="number" value="5" min="0" step=".01"></div><button class="btn" onclick="calculateCost()">Kira kos seunit</button><div class="result show" id="costResult"><div class="resultrow"><span>Kos seunit</span><b id="unitCost">RM2.00</b></div><div class="resultrow"><span>Untung kasar seunit</span><b id="unitProfit">RM3.00</b></div><div class="resultrow"><span>Margin kasar</span><b id="margin">60%</b></div></div></div><div class="card"><h3 class="section-title">✦ Cadangan AI</h3><p style="font-size:13px;color:#65746b">Berdasarkan contoh kos RM70 untuk 35 bungkus dan harga jualan RM5:</p><div class="costgrid"><div class="mini"><small>Kos seunit</small><b>RM2.00</b></div><div class="mini"><small>Harga jualan</small><b>RM5.00</b></div><div class="mini"><small>Untung kasar</small><b>RM3.00</b></div></div><div class="notice green-notice">Harga jualan melebihi kos yang direkodkan. Namun, pastikan kos lain seperti beras, minyak, perasa, pembungkusan dan upah turut dimasukkan sebelum menentukan keuntungan sebenar.</div></div></div></section>
 <section class="page" id="finance"><div class="pagehead"><div><div class="eyebrow">Financial Accounting</div><h1>Ringkasan Kewangan</h1><div class="sub">Lihat hasil jualan, perbelanjaan dan anggaran untung.</div></div></div><div class="grid"><div class="card"><div class="metric-label">Hasil jualan</div><div class="metric" id="fSales">RM175.00</div></div><div class="card"><div class="metric-label">Perbelanjaan direkodkan</div><div class="metric" id="fCost">RM70.00</div></div><div class="card"><div class="metric-label">Untung anggaran</div><div class="metric" id="fProfit">RM105.00</div></div><div class="card"><div class="metric-label">Wang diasingkan</div><div class="metric" id="fSaved">RM80.00</div></div></div><div class="card" style="margin-top:15px"><h3 class="section-title">Penyata ringkas harian</h3><div class="tablewrap"><table class="data"><thead><tr><th>Butiran</th><th>Kategori</th><th>Jumlah</th></tr></thead><tbody id="financeTable"><tr><td>Jualan nasi lemak (35 × RM5)</td><td><span class="pill">Hasil</span></td><td>RM175.00</td></tr><tr><td>Pembelian ayam</td><td>Kos bahan</td><td>−RM40.00</td></tr><tr><td>Gas memasak</td><td>Overhed</td><td>−RM30.00</td></tr><tr><td><b>Untung anggaran</b></td><td>Hasil − kos</td><td><b>RM105.00</b></td></tr></tbody></table></div><div class="notice">Nota: Ini ringkasan berdasarkan transaksi contoh yang direkodkan, bukan penyata kewangan lengkap. Pembelian stok mungkin perlu mengambil kira baki inventori dan tempoh penggunaan.</div></div></section>
 <section class="page" id="teman"><div class="pagehead"><div><div class="eyebrow">Teman TEKUN</div><h1>Persediaan Bayaran Mingguan</h1><div class="sub">Rancang wang yang perlu diasingkan sebelum sesi PSAT.</div></div></div><div class="two"><div class="card payment"><div class="metric-label">Jumlah simpanan semasa</div><div class="metric" id="tSaved">RM80.00</div><div class="metric-foot">Sasaran bayaran mingguan</div><div class="track" style="margin:15px 0 8px"><div class="fill" id="tBar" style="width:53%"></div></div><div class="metric-foot" id="tStatus">RM70.00 lagi untuk capai sasaran</div></div><div class="card"><h3 class="section-title">Tetapkan sasaran anda</h3><label class="field"><span>Bayaran mingguan (RM)</span><input id="weeklyTarget" type="number" value="150" min="0"></label><label class="field"><span>Simpanan PSAT (RM)</span><input id="psatTarget" type="number" value="30" min="0"></label><button class="btn" onclick="updateTargets()">Kemaskini sasaran</button><p class="hint">Nilai ini hanyalah contoh demo. Masukkan jumlah sebenar mengikut jadual pembiayaan dan keperluan simpanan anda.</p></div></div><div class="card" style="margin-top:15px"><h3 class="section-title">Cadangan pengasingan wang</h3><div class="activity"><div>Bayaran mingguan</div><b id="weeklyDisplay">RM150.00</b></div><div class="activity"><div>Simpanan PSAT</div><b id="psatDisplay">RM30.00</b></div><div class="activity"><div>Jumlah sasaran perlu disediakan</div><b id="totalTarget">RM180.00</b></div><div class="notice green-notice">✦ <b>Tip AI:</b> Asingkan wang secara konsisten setiap hari. Semak semula jumlah ini bersama pegawai TEKUN jika terdapat perubahan jadual bayaran.</div></div></section>
@@ -18,7 +18,7 @@
 const WORKER_URL = "https://suara-kira-ai.syamilanadia72.workers.dev";
 let sales=0,cost=0,profit=0,saved=0,target=150,psat=30,lastParsed=null;
 let transactions=[];
-let recognition=null,recording=false;
+let recognition=null,recording=false,voiceShouldContinue=false,voiceFinalTranscript="",voiceRestartTimer=null;
 
 function go(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));
@@ -46,7 +46,8 @@ function transactionDisplayAmount(t){
 function renderAnalysis(a){
   const rows=(a.transactions||[]).map(t=>{
     const title=escapeHTML(t.item||'Transaksi');
-    const detail=escapeHTML(t.explanation||categoryLabel(t.accounting_category));
+    const unitPriceNote=t.unit_price_rm==null?'':` · Harga seunit ${money(t.unit_price_rm)}`;
+    const detail=escapeHTML((t.explanation||categoryLabel(t.accounting_category))+unitPriceNote);
     const amount=transactionDisplayAmount(t);
     const badge=categoryLabel(t.accounting_category);
     return `<div class="resultrow"><span><b>${title}</b><br><small style="color:#849188">${escapeHTML(badge)} · ${detail}</small></span><b>${escapeHTML(amount)}</b></div>`;
@@ -153,21 +154,87 @@ async function scanReceipt(){
   }catch(err){toast(err.message)}
   finally{if(btn){btn.disabled=false;btn.textContent='✦ Analisis resit dengan AI'}}
 }
-function toggleVoice(){
+function setVoiceUI(active,message){
+  const mic=document.getElementById('micBtn');
+  const stop=document.getElementById('stopVoiceBtn');
+  if(mic){mic.classList.toggle('recording',active);mic.disabled=active;mic.textContent=active?'🎙':'🎙';}
+  if(stop)stop.disabled=!active;
+  if(message)document.getElementById('voiceStatus').textContent=message;
+}
+function startVoice(){
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
   if(!SR){toast('Pelayar ini tidak menyokong pengecaman suara. Sila taip ayat anda.');return}
-  if(recording){recognition.stop();return}
-  recognition=new SR();recognition.lang='ms-MY';recognition.interimResults=true;recognition.continuous=false;
-  recognition.onstart=()=>{recording=true;document.getElementById('micBtn').classList.add('recording');document.getElementById('voiceStatus').textContent='Sedang mendengar… bercakap secara semula jadi.'};
-  recognition.onresult=e=>{
-    let transcript='';for(let i=0;i<e.results.length;i++)transcript+=e.results[i][0].transcript;
-    document.getElementById('entry').value=transcript;
-    document.getElementById('voiceStatus').textContent='Suara ditukar kepada teks. Tekan “Analisis dengan AI” untuk Gemini memprosesnya.';
-  };
-  recognition.onerror=e=>toast('Rakaman tidak berjaya: '+(e.error||'semak kebenaran mikrofon.'));
-  recognition.onend=()=>{recording=false;document.getElementById('micBtn').classList.remove('recording')};
-  recognition.start();
+  if(recording)return;
+  voiceFinalTranscript='';
+  voiceShouldContinue=true;
+  recording=true;
+  document.getElementById('entry').value='';
+  setVoiceUI(true,'Sedang mendengar… bercakap pada kadar anda sendiri. Tekan Hentikan rakaman apabila selesai.');
+  startRecognitionSession(SR);
 }
+function startRecognitionSession(SR){
+  if(!voiceShouldContinue)return;
+  try{
+    recognition=new SR();
+    recognition.lang='ms-MY';
+    recognition.interimResults=true;
+    recognition.continuous=true;
+    recognition.maxAlternatives=1;
+    recognition.onresult=e=>{
+      let interim='';
+      for(let i=e.resultIndex;i<e.results.length;i++){
+        const part=e.results[i][0]?.transcript||'';
+        if(e.results[i].isFinal){
+          voiceFinalTranscript+=(voiceFinalTranscript?' ':'')+part.trim();
+        }else{
+          interim+=part;
+        }
+      }
+      const combined=(voiceFinalTranscript+' '+interim).trim();
+      document.getElementById('entry').value=combined;
+      document.getElementById('voiceStatus').textContent=interim.trim()
+        ? 'Sedang menangkap suara… anda boleh terus bercakap. Tekan Hentikan rakaman apabila selesai.'
+        : 'Suara diterima. Anda masih boleh sambung bercakap atau berhenti apabila selesai.';
+    };
+    recognition.onerror=e=>{
+      const fatal=['not-allowed','service-not-allowed','audio-capture'];
+      if(fatal.includes(e.error)){
+        voiceShouldContinue=false;recording=false;
+        setVoiceUI(false,'Rakaman dihentikan. Semak kebenaran mikrofon dan cuba lagi.');
+        toast('Rakaman tidak berjaya: '+(e.error||'semak kebenaran mikrofon.'));
+      } else if(e.error!=='no-speech' && e.error!=='aborted'){
+        toast('Gangguan pengecaman suara: '+e.error+'. Rakaman akan cuba disambung semula.');
+      }
+    };
+    recognition.onend=()=>{
+      if(voiceShouldContinue){
+        // Some browsers end a speech session after a pause. Start another session
+        // automatically while keeping the same manual recording state/transcript.
+        clearTimeout(voiceRestartTimer);
+        voiceRestartTimer=setTimeout(()=>startRecognitionSession(SR),250);
+      }else{
+        recording=false;
+        setVoiceUI(false,voiceFinalTranscript
+          ? 'Rakaman selesai. Semak teks di ruang sebelah, kemudian tekan “Analisis dengan AI”.'
+          : 'Tiada suara dikesan. Cuba rakam semula atau taip aktiviti anda.');
+      }
+    };
+    recognition.start();
+  }catch(err){
+    voiceShouldContinue=false;recording=false;
+    setVoiceUI(false,'Tidak dapat memulakan mikrofon. Semak kebenaran pelayar.');
+    toast('Tidak dapat memulakan rakaman suara.');
+  }
+}
+function stopVoice(){
+  if(!voiceShouldContinue)return;
+  voiceShouldContinue=false;
+  clearTimeout(voiceRestartTimer);
+  if(recognition){try{recognition.stop()}catch(e){}}
+  // Keep the final transcript in the text box; the onend event updates the status.
+  setVoiceUI(false,'Menghentikan rakaman… menyimpan teks yang telah dikenal pasti.');
+}
+
 function updateUI(){let vals={dSales:sales,dCost:cost,dProfit:profit,fSales:sales,fCost:cost,fProfit:profit,fSaved:saved,tSaved:saved,rSales:sales,rCost:cost,rProfit:profit,rSaved:saved};Object.entries(vals).forEach(([id,v])=>document.getElementById(id).textContent=money(v));document.getElementById('barSales').textContent=money(sales);document.getElementById('barCostText').textContent=money(cost);document.getElementById('barProfitText').textContent=money(profit);document.getElementById('barCost').style.width=(sales?Math.min(100,cost/sales*100):0)+'%';document.getElementById('barProfit').style.width=(sales?Math.min(100,profit/sales*100):0)+'%';let pct=target?Math.min(100,saved/target*100):100;['payBar','tBar'].forEach(id=>document.getElementById(id).style.width=pct+'%');document.getElementById('payPercent').textContent=Math.round(pct)+'% daripada sasaran';document.getElementById('dTarget').textContent=money(target);document.getElementById('payStatus')?.remove();document.getElementById('tStatus').textContent=saved>=target?'Sasaran bayaran mingguan telah dicapai!':money(target-saved)+' lagi untuk capai sasaran';document.getElementById('rStatus').textContent=saved>=target?'Sasaran dicapai':`Belum mencukupi – kurang ${money(target-saved)}`;document.getElementById('weeklyDisplay').textContent=money(target);document.getElementById('psatDisplay').textContent=money(psat);document.getElementById('totalTarget').textContent=money(target+psat);document.getElementById('recent').innerHTML=transactions.slice(0,5).map(t=>`<div class="activity"><div>🧾 <b>${t.name}</b><small>${t.type}</small></div><strong style="color:${t.amount<0?'var(--red)':'inherit'}">${t.amount<0?'−':''}${money(Math.abs(t.amount))}</strong></div>`).join('');document.getElementById('financeTable').innerHTML=transactions.slice(0,10).map(t=>`<tr><td>${t.name}</td><td>${t.type}</td><td>${t.amount<0?'−':''}${money(Math.abs(t.amount))}</td></tr>`).join('')+`<tr><td><b>Untung anggaran</b></td><td>Hasil − kos</td><td><b>${money(profit)}</b></td></tr>`;refreshReport()}
 function updateTargets(){target=+document.getElementById('weeklyTarget').value||0;psat=+document.getElementById('psatTarget').value||0;updateUI();toast('Sasaran dikemaskini.')}
 function calculateCost(){let c=+document.getElementById('costTotal').value||0,u=Math.max(1,+document.getElementById('units').value||1),p=+document.getElementById('unitPrice').value||0,unit=c/u,up=p-unit;document.getElementById('unitCost').textContent=money(unit);document.getElementById('unitProfit').textContent=money(up);document.getElementById('margin').textContent=p?(up/p*100).toFixed(1)+'%':'—';}
@@ -176,5 +243,5 @@ updateUI();
 fetch(WORKER_URL+'/health').then(r=>r.json()).then(d=>{
   const el=document.getElementById('aiConnection');
   if(el){el.textContent=d.ok?'● Gemini backend online':'● AI backend unavailable';el.style.color=d.ok?'#c9f4d8':'#ffd0c8'}
-}).catch(()=>{const el=document.getElementById('aiConnection');if(el)el.textContent='● AI backend unavailable'});
+}).catch(()=>{const el=document.getElementById('aiConnection');if(el)el.textContent='● AI backend unavailable'});a
 </script></body></html>
